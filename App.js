@@ -13,6 +13,9 @@ import SideBar from './components/sideBar';
 
 const App: () => React$Node = () => {
   const abcxyz = () => {return 'muahahha'}
+
+  
+
   return (
     <View>
       <SideBar hihi = {abcxyz()}/>
