@@ -9,7 +9,7 @@ class CategoryItem extends Component {
   }
 
   onPress = () => {
-    console.log('a');
+    this.props.onPress();
   };
 
   render() {
