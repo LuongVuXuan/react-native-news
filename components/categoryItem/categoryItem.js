@@ -1,7 +1,6 @@
 //import liraries
 import React, {Component} from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
-import {Root} from 'native-base';
 
 // create a component
 class CategoryItem extends Component {
@@ -10,7 +9,7 @@ class CategoryItem extends Component {
   }
 
   onPress = () => {
-    console.log(this.props.title);
+    console.log('a');
   };
 
   render() {

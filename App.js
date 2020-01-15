@@ -6,66 +6,69 @@
  * @flow
  */
 
-import React from 'react';
-import {Text, View, StyleSheet, FlatList} from 'react-native';
-import CategoryItem from './components/categoryItem/categoryItem';
-// import DrawerExample from './views/drawerExample';
-// import SideBar from './components/sideBar';
+import React, {Component} from 'react';
+import ArticleScreen from './screens/ArticleScreen';
+import HomeScreen from './screens/HomeScreen';
+import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
 
-const fakeData = [
+const AppNavigator = createStackNavigator(
   {
-    id: '1',
-    title: 'Tit1',
-    shortDescription: 'short1',
+    Home: HomeScreen,
+    Article: ArticleScreen,
   },
   {
-    id: '2',
-    title: 'Tit2',
-    shortDescription: 'short2',
+    initialRouteName: 'Home',
   },
-  {
-    id: '3',
-    title: 'Tit3',
-    shortDescription: 'short3',
-  },
-  {
-    id: '4',
-    title: 'Tit4',
-    shortDescription: 'short4',
-  },
-  {
-    id: '5',
-    title: 'Tit5',
-    shortDescription: 'short5',
-  },
-];
+);
 
-const App: () => React$Node = () => {
-  return (
-    <View style={styles.container}>
-      <FlatList
-        data={fakeData}
-        renderItem={({item}) => {
-          return (
-            <CategoryItem
-              title={item.title}
-              shortDescription={item.shortDescription}
-            />
-          );
-        }}
-        keyExtractor={item => item.id}
-      />
-    </View>
-  );
-};
+const AppContainer = createAppContainer(AppNavigator);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    margin: 5,
-    marginBottom: 0,
-    // backgroundColor: 'yellow',
-  },
-});
+export class App extends Component {
+  render() {
+    return <AppContainer />;
+  }
+}
 
-export default App;
+// import React from 'react';
+// import { View, Text } from 'react-native';
+// import { createAppContainer } from 'react-navigation';
+// import { createStackNavigator } from 'react-navigation-stack';
+
+// class HomeScreen extends React.Component {
+//   render() {
+//     return (
+//       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//         <Text>Home Screen</Text>
+//       </View>
+//     );
+//   }
+// }
+
+// class DetailsScreen extends React.Component {
+//   render() {
+//     return (
+//       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+//         <Text>Details Screen</Text>
+//       </View>
+//     );
+//   }
+// }
+
+// const RootStack = createStackNavigator(
+//   {
+//     Home: HomeScreen,
+//     Details: DetailsScreen,
+//   },
+//   {
+//     initialRouteName: 'Home',
+//   }
+// );
+
+// const AppContainer = createAppContainer(RootStack);
+
+// export default class App extends React.Component {
+//   render() {
+//     return <AppContainer />;
+//   }
+// }
