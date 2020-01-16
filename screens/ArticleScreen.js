@@ -17,7 +17,7 @@ class ArticleScreen extends Component {
           justifyContent: 'center',
           justifyContent: 'space-around',
         }}>
-        <Text>Article {this.props.navigation.getParam('title')} Screen</Text>
+        <Text>Article {this.props.navigation.getParam('CategoryName')} Screen</Text>
         <Button
           title="Go to Home"
           onPress={() => this.props.navigation.navigate('HomeScreen')}

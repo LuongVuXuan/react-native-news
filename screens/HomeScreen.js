@@ -4,52 +4,59 @@ import CategoryItem from '../components/categoryItem/CategoryItem';
 
 const fakeData = [
   {
-    id: '1',
-    title: 'Tit1',
-    shortDescription: 'short1',
+    CategoryId: '1',
+    CategoryName: 'Tit1',
+    CategoryLink: 'short1',
   },
   {
-    id: '2',
-    title: 'Tit2',
-    shortDescription: 'short2',
+    CategoryId: '2',
+    CategoryName: 'Tit2',
+    CategoryLink: 'short2',
   },
   {
-    id: '3',
-    title: 'Tit3',
-    shortDescription: 'short3',
-  },
-  {
-    id: '4',
-    title: 'Tit4',
-    shortDescription: 'short4',
-  },
-  {
-    id: '5',
-    title: 'Tit5',
-    shortDescription: 'short5',
+    CategoryId: '3',
+    CategoryName: 'Tit3',
+    CategoryLink: 'short3',
   },
 ];
 
+fetch(
+  'http://192.168.1.11:8080//getCategorieByPosition?position=TOP&culture=vi-VN&tokenKey=a',
+)
+  .then(response => response.json())
+  .then(responseJson => {
+    // console.log(responseJson);
+    var data = responseJson
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
 class HomeScreen extends Component {
-  onPressHandler = (item) => {
-    this.props.navigation.navigate('ArticleScreen', item);
+  constructor(props){
+    super(props);
+    this.state = { data: fakeData};
   }
+
+  onPressHandler = item => {
+    this.props.navigation.navigate('ArticleScreen', item);
+  };
   render() {
     return (
       <View style={styles.container}>
         <FlatList
-          data={fakeData}
+          data={this.state.data}
           renderItem={({item}) => {
             return (
               <CategoryItem
-                title={item.title}
-                shortDescription={item.shortDescription}
-                id={item.id}
+                title={item.CategoryName}
+                shortDescription={item.CategoryName}
+                id={item.CategoryId}
                 onPress={this.onPressHandler.bind(this, item)}
               />
             );
           }}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item.CategoryId}
         />
       </View>
     );
