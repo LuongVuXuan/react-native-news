@@ -17,7 +17,7 @@ const AppNavigator = createStackNavigator(
     ArticleScreen,
   },
   {
-    initialRouteName: 'ArticleScreen',
+    initialRouteName: 'HomeScreen',
   },
 );
 

@@ -4,6 +4,10 @@ import {View, Text, Button} from 'react-native';
 
 // create a component
 class ArticleScreen extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <View
@@ -13,11 +17,7 @@ class ArticleScreen extends Component {
           justifyContent: 'center',
           justifyContent: 'space-around',
         }}>
-        <Text>Article Screen</Text>
-        <Button
-          title='Go to Article ... again'
-          onPress={() => this.props.navigation.push('ArticleScreen')}
-        />
+        <Text>Article {this.props.navigation.getParam('title')} Screen</Text>
         <Button
           title="Go to Home"
           onPress={() => this.props.navigation.navigate('HomeScreen')}

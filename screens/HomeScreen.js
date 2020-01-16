@@ -31,8 +31,8 @@ const fakeData = [
 ];
 
 class HomeScreen extends Component {
-  onPressHandler() {
-    this.props.navigation.navigate('Article');
+  onPressHandler = (item) => {
+    this.props.navigation.navigate('ArticleScreen', item);
   }
   render() {
     return (
@@ -45,7 +45,7 @@ class HomeScreen extends Component {
                 title={item.title}
                 shortDescription={item.shortDescription}
                 id={item.id}
-                onPress={this.onPressHandler}
+                onPress={this.onPressHandler.bind(this, item)}
               />
             );
           }}
