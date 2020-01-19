@@ -1,47 +1,49 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, FlatList} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  FlatList,
+  Text,
+  ActivityIndicator,
+} from 'react-native';
 import CategoryItem from '../components/categoryItem/CategoryItem';
 
-const fakeData = [
-  {
-    CategoryId: '1',
-    CategoryName: 'Tit1',
-    CategoryLink: 'short1',
-  },
-  {
-    CategoryId: '2',
-    CategoryName: 'Tit2',
-    CategoryLink: 'short2',
-  },
-  {
-    CategoryId: '3',
-    CategoryName: 'Tit3',
-    CategoryLink: 'short3',
-  },
-];
-
-fetch(
-  'http://192.168.1.11:8080//getCategorieByPosition?position=TOP&culture=vi-VN&tokenKey=a',
-)
-  .then(response => response.json())
-  .then(responseJson => {
-    // console.log(responseJson);
-    var data = responseJson
-  })
-  .catch(error => {
-    console.error(error);
-  });
-
 class HomeScreen extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
-    this.state = { data: fakeData};
+    this.state = {isLoading: true};
+  }
+
+  componentDidMount() {
+    return fetch(
+      'http://192.168.1.8:8080//getCategorieByPosition?position=BOTTOM&culture=vi-VN&tokenKey=a',
+    )
+      .then(response => response.json())
+      .then(responseJson => {
+        let obj = JSON.parse(responseJson);
+
+        this.setState({
+          isLoading: false,
+          data: obj,
+        });
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }
 
   onPressHandler = item => {
     this.props.navigation.navigate('ArticleScreen', item);
   };
+
   render() {
+    if (this.state.isLoading) {
+      return (
+        <View style={{flex: 1, padding: 20}}>
+          <ActivityIndicator />
+        </View>
+      );
+    }
     return (
       <View style={styles.container}>
         <FlatList
