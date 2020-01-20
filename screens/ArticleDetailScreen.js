@@ -15,7 +15,7 @@ class ArticleDetailScreen extends Component {
     )
       .then(response => response.json())
       .then(responseJson => {
-        console.log(responseJson);
+        // console.log(responseJson);
 
         let objJson = JSON.parse(responseJson);
 
@@ -40,7 +40,7 @@ class ArticleDetailScreen extends Component {
     return (
     //   <View style={styles.container}>
     //     <Text source={{html: this.state.data.Title}} />
-        <WebView style={{flex: 1}} source={{html: this.state.data.FullContent}} />
+        <WebView source={{html: this.state.data.FullContent}} />
         // {/* <Text source={{html: this.state.data.CreatedDate}} />
     //   </View> */}
     );

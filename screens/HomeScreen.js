@@ -20,7 +20,7 @@ class HomeScreen extends Component {
     )
       .then(response => response.json())
       .then(responseJson => {
-        console.log(responseJson);
+        // console.log(responseJson);
         
         let objJson = JSON.parse(responseJson);
 
