@@ -16,15 +16,17 @@ class HomeScreen extends Component {
 
   componentDidMount() {
     return fetch(
-      'http://192.168.1.8:8080//getCategorieByPosition?position=BOTTOM&culture=vi-VN&tokenKey=a',
+      'http://192.168.1.12:8080//getCategorieByPosition?position=TOP&culture=vi-VN&tokenKey=a',
     )
       .then(response => response.json())
       .then(responseJson => {
-        let obj = JSON.parse(responseJson);
+        console.log(responseJson);
+        
+        let objJson = JSON.parse(responseJson);
 
         this.setState({
           isLoading: false,
-          data: obj,
+          data: objJson,
         });
       })
       .catch(error => {

@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 
 // create a component
-class CategoryItem extends Component {
+class ArticleItem extends Component {
   constructor(props) {
     super(props);
   }
@@ -27,7 +27,7 @@ class CategoryItem extends Component {
             <Text style={{fontWeight: 'bold', fontSize: 17}}>
               {this.props.title}
             </Text>
-            {/* <Text>{this.props.shortDescription}</Text> */}
+            <Text>{this.props.shortDescription}</Text>
           </View>
         </View>
       </TouchableOpacity>
@@ -57,4 +57,4 @@ const styles = StyleSheet.create({
 });
 
 //make this component available to the app
-export default CategoryItem;
+export default ArticleItem;
