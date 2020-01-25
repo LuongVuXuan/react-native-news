@@ -37,13 +37,7 @@ class ArticleDetailScreen extends Component {
         </View>
       );
     }
-    return (
-    //   <View style={styles.container}>
-    //     <Text source={{html: this.state.data.Title}} />
-        <WebView source={{html: this.state.data.FullContent}} />
-        // {/* <Text source={{html: this.state.data.CreatedDate}} />
-    //   </View> */}
-    );
+    return <WebView source={{html: this.state.data.FullContent}} />;
   }
 }
 

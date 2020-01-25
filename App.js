@@ -16,7 +16,7 @@ const AppNavigator = createStackNavigator(
   {
     HomeScreen,
     ArticleScreen,
-    ArticleDetailScreen
+    ArticleDetailScreen,
   },
   {
     initialRouteName: 'HomeScreen',

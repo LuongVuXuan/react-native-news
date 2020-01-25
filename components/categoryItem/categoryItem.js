@@ -24,10 +24,9 @@ class CategoryItem extends Component {
             />
           </View>
           <View style={{justifyContent: 'center', flex: 8}}>
-            <Text style={{fontWeight: 'bold', fontSize: 17}}>
+            <Text numberOfLines={1} style={{fontWeight: 'bold', fontSize: 17}}>
               {this.props.title}
             </Text>
-            {/* <Text>{this.props.shortDescription}</Text> */}
           </View>
         </View>
       </TouchableOpacity>

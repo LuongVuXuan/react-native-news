@@ -1,6 +1,13 @@
 //import liraries
 import React, {Component} from 'react';
-import {View, Text, Button, StyleSheet, ActivityIndicator, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  Button,
+  StyleSheet,
+  ActivityIndicator,
+  FlatList,
+} from 'react-native';
 import ArticleItem from '../components/articleItem/ArticleItem';
 
 // create a component
@@ -18,12 +25,13 @@ class ArticleScreen extends Component {
 
   componentDidMount() {
     return fetch(
-      'http://192.168.1.12:8080//getArticlesByCategoryId?id=' + this.props.navigation.getParam('CategoryId'),
+      'http://192.168.1.12:8080//getArticlesByCategoryId?id=' +
+        this.props.navigation.getParam('CategoryId'),
     )
       .then(response => response.json())
       .then(responseJson => {
         // console.log(responseJson);
-        
+
         let objJson = JSON.parse(responseJson);
 
         this.setState({
@@ -46,7 +54,9 @@ class ArticleScreen extends Component {
     }
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>Các bài viết của {this.props.navigation.getParam('CategoryName')}</Text>
+        <Text style={styles.text}>
+          Các bài viết của {this.props.navigation.getParam('CategoryName')}
+        </Text>
         <FlatList
           data={this.state.data}
           renderItem={({item}) => {
@@ -74,7 +84,6 @@ class ArticleScreen extends Component {
   }
 }
 
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -82,13 +91,13 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     backgroundColor: '#c3c3c3',
   },
-  text:{
+  text: {
     fontSize: 20,
-    fontWeight: "bold",
-    justifyContent: "center",
+    fontWeight: 'bold',
+    justifyContent: 'center',
     alignItems: 'center',
     margin: 10,
-  }
+  },
 });
 //make this component available to the app
 export default ArticleScreen;

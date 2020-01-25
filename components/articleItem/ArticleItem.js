@@ -24,10 +24,10 @@ class ArticleItem extends Component {
             />
           </View>
           <View style={{justifyContent: 'center', flex: 8}}>
-            <Text style={{fontWeight: 'bold', fontSize: 17}}>
+            <Text numberOfLines={1} style={{fontWeight: 'bold', fontSize: 17}}>
               {this.props.title}
             </Text>
-            <Text>{this.props.shortDescription}</Text>
+            <Text numberOfLines={1}>{this.props.shortDescription}</Text>
           </View>
         </View>
       </TouchableOpacity>
